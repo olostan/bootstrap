@@ -41,7 +41,7 @@ angular.module('ui.bootstrap.dropdown', [])
   };
 }])
 
-.controller('DropdownController', ['$scope', '$attrs', 'dropdownConfig', 'dropdownService', function($scope, $attrs, dropdownConfig, dropdownService, $animate) {
+.controller('DropdownController', ['$scope', '$attrs', 'dropdownConfig', 'dropdownService','$animate', function($scope, $attrs, dropdownConfig, dropdownService, $animate) {
   var self = this, openClass = dropdownConfig.openClass;
 
   this.init = function( element ) {
@@ -54,10 +54,12 @@ angular.module('ui.bootstrap.dropdown', [])
   };
 
   $scope.$watch('isOpen', function( value ) {
-    if (value) 
+    if (value)  {
       $animate.addClass(self.$element, openClass);
-    else
+    }
+    else {
       $animate.removeClass(self.$element, openClass);
+    }
 
     if ( value ) {
       dropdownService.open( $scope );
